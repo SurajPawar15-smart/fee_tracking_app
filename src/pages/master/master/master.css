@@ -1,0 +1,17 @@
+body {
+      background-color: #f8f9fa;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .sidebar {
+      background: #fff;
+      border-left: 2px solid #dee2e6;
+      padding: 1rem;
+      height: 100%;
+    }
+    .sidebar h5 {
+      margin-bottom: 1rem;
+    }

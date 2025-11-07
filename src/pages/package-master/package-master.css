@@ -1,0 +1,18 @@
+body {
+      background-color: #f8f9fa;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+    .sidebar {
+      background: #fff;
+      border-left: 2px solid #dee2e6;
+      padding: 1rem;
+      height: 100%;
+      min-height: 90vh;
+    }
+    .sidebar h5 {
+      font-weight: 600;
+    }
