@@ -22,28 +22,28 @@
       <!-- Master Cards -->
       <div class="card p-3 shadow-sm">
         <div class="card-grid">
-          <div class="card border">
-            <div class="card-body">
-              <h6 class="card-title mb-2">Master For: Payment Mode</h6>
-              <p class="card-text small">Master Value: Cash</p>
-              <div class="d-flex justify-content-between">
-                <button class="btn btn-sm btn-outline-primary">Edit</button>
-                <button class="btn btn-sm btn-outline-danger">Delete</button>
-              </div>
-            </div>
-          </div>
+        @for (item of masterList; track $index) {
+  <div class="card border mb-2">
+    <div class="card-body">
+      <h6 class="card-title mb-2">Master For: {{ item.masterFor }}</h6>
+      <p class="card-text small">Master Value: {{ item.masterValue }}</p>
+      <div class="d-flex justify-content-between">
+        <button 
+          class="btn btn-sm btn-outline-primary" 
+          (click)="OnEdit(item)">
+          Edit
+        </button>
+        <button 
+          class="btn btn-sm btn-outline-danger"
+          (click)="onDelete(item.masterId)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+}
 
-          <div class="card border">
-            <div class="card-body">
-              <h6 class="card-title mb-2">Master For: Reference</h6>
-              <p class="card-text small">Master Value: Admin</p>
-              <div class="d-flex justify-content-between">
-                <button class="btn btn-sm btn-outline-primary">Edit</button>
-                <button class="btn btn-sm btn-outline-danger">Delete</button>
-              </div>
-            </div>
-          </div>
-
+         
           <!-- Repeat cards dynamically here -->
         </div>
       </div>
@@ -59,14 +59,30 @@
 
         <form>
           <div class="mb-3">
-            <label class="form-label">Master For</label>
-            <input type="text" class="form-control" placeholder="Enter master key" />
+            <label class="form-label" for="masterFor">Master For</label>
+            <input type="text" [(ngModel)]="newMasterObj.masterFor" name="masterFor"id="masterFor" class="form-control" placeholder="Enter master key"  required/>
           </div>
+
           <div class="mb-3">
-            <label class="form-label">Master Value</label>
-            <input type="text" class="form-control" placeholder="Enter master value" />
+            <label class="form-label"for="masterValue">Master Value</label>
+            <input type="text" [(ngModel)]="newMasterObj.masterValue" name="masterValue"id="masterValue" class="form-control" placeholder="Enter master value" required/>
           </div>
-          <button class="btn btn-primary w-100">Save</button>
+
+          <!-- <button (click)="onSaveMaster()" class="btn btn-primary w-100 mb-2">Create</button>
+          <button class="btn btn-secondary w-100" (click)="onReset()">Cancel</button> -->
+          <button type="button" class="btn btn-secondary me-2">
+                            <i class="fa fa-times"></i> Cancel
+                        </button>
+                        @if (newMasterObj.masterId == 0) {
+                            <button type="button" (click)="onSaveMaster()" class="btn btn-primary">
+                            <i class="fa fa-save"></i> Create Employee
+                            </button>
+                        } @else { 
+                            <button type="button" (click)="onReset()" class="btn btn-warning">
+                            <i class="fa fa-save"></i> Update Employee
+                            </button>
+                        }
+                       
         </form>
       </div>
     </div>
